@@ -27,6 +27,13 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = current_user.id
 
+    params[:task][:tag_ids].each do |tag_id|
+      unless tag_id.empty?
+      tag = Tag.find(tag_id)
+        @task.tags << tag
+      end
+    end
+
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
