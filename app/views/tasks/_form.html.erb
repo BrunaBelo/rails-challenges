@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
     <%= collection_select(:task, :tag_ids, Tag.all, :id, :name, {}, { :multiple => true, class: "form-control" } )%>
   </div>
 
