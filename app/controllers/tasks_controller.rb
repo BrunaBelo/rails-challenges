@@ -50,6 +50,14 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    @task.tags = []
+    params[:task][:tag_ids].each do |tag_id|
+      unless tag_id.empty?
+      tag = Tag.find(tag_id)
+        @task.tags << tag
+      end
+    end
+    
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
