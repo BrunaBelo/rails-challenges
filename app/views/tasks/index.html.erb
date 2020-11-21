@@ -1,43 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>User</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.description %></td>
-        <td><%= task.user_id %></td>
-
-        <td>
-          <div class="row col-md-12">
-            <% task.tags.each do |tag| %>
-              <span class="tag">#<%= tag.name %></span>
-            <% end %>
-          </div>
-        </td>
-
-        <% if user_signed_in? %>
-          <td><%= link_to 'Show', task %></td>
-          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if user_signed_in? %>
-    <%= link_to 'New Task', new_task_path %>
+<%= form_tag tasks_path, method: 'get', id: "tags_search" do %>
+  <% tags_array = Tag.all.map { |tag| [tag.name, tag.id] } %>
+  <%= select_tag "with_tag[]", options_for_select(tags_array), id: "select_tags", class: "form-control"%>
 <% end %>
+
+<div id="tasks"><%= render 'tasks' %></div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#select_tags').change(function(){
+      $.get($('#tags_search').attr('action'),
+      $('#tags_search').serialize(), null, 'script');
+      return false;
+    });
+  });
+</script>

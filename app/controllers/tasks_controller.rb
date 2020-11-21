@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, :except => [ :index ]
-
+  has_scope :with_tag, type: :array
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = apply_scopes(Task).all
   end
 
   # GET /tasks/1
