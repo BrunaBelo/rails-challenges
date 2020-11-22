@@ -1,12 +1,12 @@
 user = User.create(:email => 'user@gmail.com', :password => '123456', :password_confirmation => '123456')
 
 tags = Tag.create([
-        { name: 'Editorial' },
-        { name: 'Q1 Goals' },
-        { name: 'Recruiting' },
-        { name: 'Mobile' },
-        { name: 'Website' },
-        { name: 'Sales' }
+        { name: 'Editorial', color: '#4d94ff' },
+        { name: 'Q1 Goals', color: '#d147a3' },
+        { name: 'Recruiting', color: '#4dff88' },
+        { name: 'Mobile', color: '#ffd11a' },
+        { name: 'Website', color: '#ff4da6' },
+        { name: 'Sales', color: '#ccff33' }
     ])
 
 Task.create(:user => user, :description => 'Quarterly newsletter', :date => '2020-11-20', :tags =>  [tags[0]])
