@@ -6,6 +6,7 @@ gem 'devise'
 gem 'has_scope'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.5.0'
+gem 'font-awesome-sass', '~> 5.15.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
