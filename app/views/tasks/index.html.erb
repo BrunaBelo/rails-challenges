@@ -1,11 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="mt-2 mb-2">
+   <%= form_tag tasks_path, method: 'get', id: "tags_search" do %>
+      <% tags_array = Tag.all.map { |tag| [tag.name, tag.id] } %>
+      <%= select_tag "with_tag[]", options_for_select(tags_array), id: "select_tags", class: "form-control"%>
+    <% end %>
+  </div>
+</div>
 
-<%= form_tag tasks_path, method: 'get', id: "tags_search" do %>
-  <% tags_array = Tag.all.map { |tag| [tag.name, tag.id] } %>
-  <%= select_tag "with_tag[]", options_for_select(tags_array), id: "select_tags", class: "form-control"%>
-<% end %>
-
-<div id="tasks"><%= render 'tasks' %></div>
+<div id="tasks"><%= render partial: 'tasks' %></div>
 
 <script type="text/javascript">
   $(function () {

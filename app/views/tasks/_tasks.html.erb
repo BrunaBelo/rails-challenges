@@ -1,43 +1,91 @@
-<h1>Tasks</h1>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <% if user_signed_in? %>
+        <%= button_to "Add Task", new_task_path, :class=> "btn btn-primary", :method => :get %>
+      <% else %>
+        <span>Tasks</span>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <div class="tomorrow mb-5">
+        <h1>New Tasks</h1>
+        <% @tasks.select { |task| task.date == Date.tomorrow }.each  do |task| %>
+          <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+              Item <%= task.description %>
+            </div>
+                      
+            <div class="p-2 bd-highlight">
+              <% task.tags.each do |tag| %>
+                <span class="tag">#<%= tag.name %></span>
+              <% end %>
+            </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Date</th>
-      <th>User</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+            <div class="p-2 bd-highlight">Tomorrow</div>
 
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.description %></td>
-        <td><%= task.date %></td>
-        <td><%= task.user_id %></td>
-
-        <td>
-          <div class="row col-md-12">
-            <% task.tags.each do |tag| %>
-              <span class="tag">#<%= tag.name %></span>
-            <% end %>
+            <div class="p-2 bd-highlight">
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_task_path(task) %>
+                <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
           </div>
-        </td>
-
-        <% if user_signed_in? %>
-          <td><%= link_to 'Show', task %></td>
-          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
 
-<br>
+      <div class="today mb-5">
+        <h1>Today</h1>
+        <% @tasks.select { |task| task.date == Date.today }.each  do |task| %>
+          <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+              Item <%= task.description %>
+            </div>
+                      
+            <div class="p-2 bd-highlight">
+              <% task.tags.each do |tag| %>
+                <span class="tag">#<%= tag.name %></span>
+              <% end %>
+            </div>
 
-<% if user_signed_in? %>
-    <%= link_to 'New Task', new_task_path %>
-<% end %>
+            <div class="p-2 bd-highlight">Today</div>
+
+            <div class="p-2 bd-highlight">
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_task_path(task) %>
+                <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="other">
+        <h1>Upcoming</h1>
+        <% @tasks.select { |task| task.date > Date.tomorrow }.each  do |task| %>
+          <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+              Item <%= task.description %>
+            </div>
+                      
+            <div class="p-2 bd-highlight">
+              <% task.tags.each do |tag| %>
+                <span class="tag">#<%= tag.name %></span>
+              <% end %>
+            </div>
+
+            <div class="p-2 bd-highlight"><%= task.date.strftime('%b %d') %></div>
+
+            <div class="p-2 bd-highlight">
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_task_path(task) %>
+                <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+</div>
