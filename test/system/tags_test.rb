@@ -15,6 +15,7 @@ class TagsTest < ApplicationSystemTestCase
     click_on "New Tag"
 
     fill_in "Name", with: @tag.name
+    fill_in "Color", with: @tag.color
     click_on "Create Tag"
 
     assert_text "Tag was successfully created"
@@ -26,6 +27,7 @@ class TagsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @tag.name
+    fill_in "Color", with: @tag.color
     click_on "Update Tag"
 
     assert_text "Tag was successfully updated"
