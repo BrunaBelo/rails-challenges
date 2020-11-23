@@ -1,3 +1,37 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.tasks h1{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tasks h1{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.description{
+    font-size: 16px;
+}
+
+.tag{
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: white;
+}
+
+.tomorrow,
+.today,
+.upcoming{
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.tomorrow,
+.today{
+    color: #45BC78;
+}
