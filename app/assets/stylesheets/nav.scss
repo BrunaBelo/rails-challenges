@@ -1,0 +1,10 @@
+.sign-out a:hover,
+.sign-in a:hover,
+.register a:hover{
+    background-color: transparent;
+}
+
+.sign-out, .register, .sign-in a{
+    font-size: 15px;
+    font-weight: bold;
+}
