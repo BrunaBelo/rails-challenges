@@ -1,34 +1,35 @@
-<% if notice %>
+<div class="container index-tag">
+  <% if notice %>
     <div class="alert alert-success alert-dismissible mt-3">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <span><%= notice %></span>
     </div>
-<% end %>
+  <% end %>
 
-<h1>Tags</h1>
+  <div class="card mt-5">
+    <div class="card-header">
+      <strong><%= button_to "New Tag", new_tag_path, :class=> "btn btn-primary", :method => :get %></strong>
+    </div>
+    <div class="card-body">
+        <% @tags.each do |tag| %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col">
+                  <span class="color-tag mr-5" style="background-color: <%= tag.color %>;"></span>
+                  <span class="name-tag"><%= tag.name %></span>
+                </div>
+                <div class="col row justify-content-end">
+                  <%= button_to "Show", tag, :class=> "btn btn-info mr-2", :method => :get %>
+                  <%= button_to "Edit", edit_tag_path(tag), :class=> "btn btn-primary mr-2", :method => :get %>
+                  <%= button_to "Destroy", tag, :class=> "btn btn-danger mr-2", :method => :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Color</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= tag.color %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tag', new_tag_path %>

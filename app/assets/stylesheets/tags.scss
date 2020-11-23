@@ -2,17 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.show-tag .color-tag{
+.show-tag,
+.index-tag, .color-tag{
     border-top: 4px solid transparent; 
     border-left: 30px solid transparent; 
     border-right: 30px solid transparent; 
     margin: 0 0 0 7px;
 }
 
-.show-tag strong{
+.show-tag,
+.index-tag, strong{
     font-size: 18px;
 }
 
-.show-tag span{
+.show-tag,
+.index-tag, span{
     font-size: 16px;
+}
+
+.color-tag{
+    border-radius: 50em;
+}
+
+.name-tag{
+    font-weight: bold;
 }
