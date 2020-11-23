@@ -33,7 +33,10 @@
       </div>
       <div class="card-footer text-muted">
         <div class="row float-right">
-          <%= button_tag(type: 'submit', class: "btn btn-primary") do %> Save<% end %>
+          <div class="add-tag">
+            <%= link_to 'Add Tag', new_tag_path, class: "btn btn-primary mr-2" %>
+          </div>
+          <%= button_tag(type: 'submit', class: "btn btn-success") do %> Save<% end %>
         </div>
       </div>
     </div>
