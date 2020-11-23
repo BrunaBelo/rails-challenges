@@ -1,3 +1,18 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.show .color-tag{
+    border-top: 4px solid transparent; 
+    border-left: 30px solid transparent; 
+    border-right: 30px solid transparent; 
+    margin: 0 0 0 7px;
+}
+
+.show-tag strong{
+    font-size: 18px;
+}
+
+.show-tag span{
+    font-size: 16px;
+}

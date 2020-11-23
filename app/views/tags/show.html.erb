@@ -1,14 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container show-tag">
+  <% if notice %>
+    <div class="alert alert-success mt-2" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tag.name %>
-</p>
+  <div class="card mt-5">
+    <div class="card-header">
+      <strong>Tag</strong>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Name:</strong>
+            <span><%= @tag.name %></span>
+          </li>
 
-<p>
-  <strong>Color:</strong>
-  <%= @tag.color %>
-</p>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+          <li class="list-group-item">
+            <strong>Color:</strong>
+            <span class="color-tag" style="background-color: <%= @tag.color %>;"></span>
+          </li>
+        </ul>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="row float-right">
+        <%= button_to "Edit", edit_tag_path(@tag), :class=> "btn btn-primary mr-2", :method => :get %>
+        <%= button_to "Destroy", @tag, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger", :method => :delete %>
+      </div>
+    </div>
+  </div>
+</div>
