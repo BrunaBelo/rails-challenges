@@ -1,4 +1,9 @@
 <div class="container">
+  <% if notice %>
+    <div class="alert alert-success mt-2" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
   <div class="card">
     <div class="card-header">
       <% if user_signed_in? %>
