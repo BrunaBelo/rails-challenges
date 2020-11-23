@@ -1,7 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container show-task">
-  <div class="card">
+  <% if notice %>
+    <div class="alert alert-success mt-2" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <div class="card mt-5">
     <div class="card-header">
       <strong>Task</strong>
     </div>

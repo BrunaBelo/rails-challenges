@@ -1,31 +1,41 @@
-<%= form_with(model: task, local: true) do |form| %>
-  <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<div class="container form-task">
+  <%= form_with(model: task, local: true) do |form| %>
+    <% if task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        <ul>
+          <% task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="card mt-5">
+      <div class="card-header">
+        <strong>Task</strong>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <strong><%= form.label :description %></strong>
+          <%= form.text_field :description, class: "form-control mb-4" %>
+        </div>
+
+        <div class="field">
+          <strong><%= form.label :date %></strong>
+          <%= form.date_field :date, class: "form-control mb-4" %>
+        </div>
+
+        <div class="field">
+          <strong><%= form.label :tags %></strong>
+          <%= collection_select(:task, :tag_ids, Tag.all, :id, :name, {}, { :multiple => true, class: "form-control" } )%>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row float-right">
+          <%= button_tag(type: 'submit', class: "btn btn-primary") do %> Save<% end %>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field :date %>
-  </div>
-
-  <div class="field">
-    <%= collection_select(:task, :tag_ids, Tag.all, :id, :name, {}, { :multiple => true, class: "form-control" } )%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
