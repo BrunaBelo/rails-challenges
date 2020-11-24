@@ -29,7 +29,10 @@
       </div>
       <div class="card-footer text-muted">
         <div class="row float-right">
-          <%= button_tag(type: 'submit', class: "btn btn-success") do %> Save<% end %>
+          <%= button_tag(type: 'submit', class: "btn btn-success mr-2") do %> Save<% end %>
+          <div class="action">
+            <%= link_to "Back", :back, :class=> "btn btn-dark" %>
+          </div>
         </div>
       </div>
     </div>
