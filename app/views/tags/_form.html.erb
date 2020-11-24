@@ -1,9 +1,9 @@
-<div class="container form-task">
+<div class="container form-tag">
   <%= form_with(model: tag, local: true) do |form| %>
     <% if tag.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
-
+      <div class="alert alert-danger alert-dismissible mt-3">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</span>
         <ul>
           <% tag.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -14,7 +14,7 @@
 
     <div class="card mt-5">
       <div class="card-header">
-        <strong>Task</strong>
+        <strong>Tag</strong>
       </div>
       <div class="card-body">
         <div class="field">
