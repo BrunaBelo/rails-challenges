@@ -1,4 +1,11 @@
 <div class="container">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible mt-3">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <span><%= notice %></span>
+    </div>
+  <% end %>
+
   <div class="mt-2 mb-2 centered">
    <%= form_tag tasks_path, method: 'get', id: "tags_search" do %>
       <% tags_array = Tag.all.map { |tag| [tag.name, tag.id] } %>
