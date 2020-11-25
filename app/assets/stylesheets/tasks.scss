@@ -8,11 +8,6 @@
     font-weight: bold;
 }
 
-.tasks h1{
-    font-size: 18px;
-    font-weight: bold;
-}
-
 .description{
     font-size: 16px;
 }
@@ -40,8 +35,6 @@
     background-color: transparent;
 }
 
-
-//Edit Task
 .show-task strong{
     font-size: 18px;
 }
@@ -56,4 +49,10 @@
 
 .close:hover{
     background-color: transparent;
+}
+
+.form-user h1{
+    font-size: 32px;
+    margin-bottom: 0.5em;
+    font-family: 'Roboto', sans-serif;
 }
