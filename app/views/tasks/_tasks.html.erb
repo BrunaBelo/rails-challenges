@@ -10,7 +10,7 @@
     <div class="card-body">
       <div class="tasks mb-5">
         <h1><i class="fas fa-caret-down"></i> New Tasks</h1>
-        <% @tasks.select { |task| task.date == Date.tomorrow }.each  do |task| %>
+        <% @tasks.select { |task| task.date == Date.tomorrow.in_time_zone('Brasilia').to_date }.each  do |task| %>
           <div class="d-flex bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight description">
               <i class="fas fa-check-circle"></i>
@@ -36,7 +36,7 @@
 
       <div class="tasks mb-5">
         <h1><i class="fas fa-caret-down"></i> Today</h1>
-        <% @tasks.select { |task| task.date == Date.today }.each  do |task| %>
+        <% @tasks.select { |task| task.date == Date.today.in_time_zone('Brasilia').to_date }.each  do |task| %>
           <div class="d-flex bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight">
               <i class="fas fa-check-circle"></i>
@@ -62,7 +62,7 @@
 
       <div class="tasks">
         <h1><i class="fas fa-caret-down"></i> Upcoming</h1>
-        <% @tasks.select { |task| task.date > Date.tomorrow }.each  do |task| %>
+        <% @tasks.select { |task| task.date > Date.tomorrow.in_time_zone('Brasilia').to_date }.each  do |task| %>
           <div class="d-flex bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight">
               <i class="fas fa-check-circle"></i>
